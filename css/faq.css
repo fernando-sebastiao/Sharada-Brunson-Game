@@ -1,0 +1,81 @@
+/* ══════════════════════════════════════
+   faq.css — Ficheiro de Estilos do FAQ
+   Design de acordeão para perguntas frequentes.
+   ══════════════════════════════════════ */
+
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.faq-item:hover {
+  border-color: var(--purple2);
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.1);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 18px 24px;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: color var(--transition);
+}
+
+.faq-question:hover {
+  color: var(--gold);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), padding 0.3s ease;
+  padding: 0 24px;
+  color: var(--muted);
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.faq-answer p {
+  padding-bottom: 18px;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px; /* valor suficientemente grande */
+  transition: max-height 0.3s cubic-bezier(1, 0, 1, 0), padding 0.3s ease;
+}
+
+.faq-item.active {
+  border-color: var(--gold);
+}
+
+.faq-icon {
+  font-size: 1.1rem;
+  color: var(--muted);
+  transition: transform var(--transition), color var(--transition);
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+  color: var(--gold);
+}

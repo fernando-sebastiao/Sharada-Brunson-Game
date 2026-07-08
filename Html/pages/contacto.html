@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto — Sharada do Brunson</title>
+  <meta name="description" content="Entra em contacto com a equipa da Sharada do Brunson. Sugestões, dúvidas ou parcerias.">
+  <link rel="canonical" href="https://sharada-do-brunson.vercel.app/pages/contacto.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/pages.css">
+  <link rel="stylesheet" href="../../css/forms.css">
+  <link rel="stylesheet" href="../../css/custom.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-brand">🧠 Sharada</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html">Início</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="fases.html">Fases</a></li>
+      <li><a href="ranking.html">Ranking</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contacto.html" class="active">Contacto</a></li>
+      <li><a href="../login.html" class="btn btn-primary nav-btn-small">Entrar</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="dark-toggle" id="dark-toggle" aria-label="Alternar tema">🌙</button>
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-wrapper wrapper-align-start">
+    <div class="inner-page inner-page-medium">
+
+      <a href="../index.html" class="back-link">← Voltar ao Início</a>
+
+      <div class="page-hero">
+        <div class="page-hero-icon">✉️</div>
+        <h1 class="page-title">Contacto</h1>
+        <p class="page-subtitle">Tens sugestões, dúvidas ou queres reportar um problema? Fala connosco.</p>
+      </div>
+
+      <!-- Informações de contacto -->
+      <div class="contacto-grid">
+        <div class="contacto-info-card">
+          <div class="contacto-info-icon">📧</div>
+          <div class="contacto-info-label">Email</div>
+          <div class="contacto-info-value">sharada@brunson.ao</div>
+        </div>
+        <div class="contacto-info-card">
+          <div class="contacto-info-icon">💬</div>
+          <div class="contacto-info-label">WhatsApp</div>
+          <div class="contacto-info-value">+244 940 718 875</div>
+        </div>
+        <div class="contacto-info-card">
+          <div class="contacto-info-icon">🌍</div>
+          <div class="contacto-info-label">Localização</div>
+          <div class="contacto-info-value">Luanda, Angola</div>
+        </div>
+        <div class="contacto-info-card">
+          <div class="contacto-info-icon">⏰</div>
+          <div class="contacto-info-label">Resposta em</div>
+          <div class="contacto-info-value">até 48 horas</div>
+        </div>
+      </div>
+
+      <!-- Formulário -->
+      <div class="form-card">
+        <form id="contacto-form" novalidate>
+
+          <div class="grid-2-cols">
+            <div class="field">
+              <label for="ct-name">Nome</label>
+              <input type="text" id="ct-name" name="nome" placeholder="O seu nome" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="ct-email">Email</label>
+              <input type="email" id="ct-email" name="email" placeholder="o_seu@email.com" autocomplete="email" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="ct-assunto">Assunto</label>
+            <select id="ct-assunto" name="assunto">
+              <option value="">Seleccione um assunto…</option>
+              <option value="sugestao">Sugestão de melhoria</option>
+              <option value="bug">Reportar um erro</option>
+              <option value="parceria">Parceria / Colaboração</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="ct-msg">Mensagem</label>
+            <textarea id="ct-msg" name="mensagem" placeholder="Escreve a tua mensagem aqui…" required rows="5"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">📨 Enviar Mensagem</button>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- MAPA INTERACTIVO (Localização) -->
+      <div class="map__container">
+        <div class="map__copy">
+          <div>
+            <h2 class="map__title">
+              <span class="map__title-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 21s7-4.44 7-11a7 7 0 0 0-14 0c0 6.56 7 11 7 11Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
+              </span>
+              Onde nos Encontrar
+            </h2>
+            <p class="map__subtitle">Visite o Restaurante Sabor & Arte na Universidade Católica de Angola, em Luanda.</p>
+          </div>
+          <a
+            class="map-link"
+            href="https://www.openstreetmap.org/?mlat=-8.85761&mlon=13.28194#map=17/-8.85761/13.28194"
+            target="_blank"
+            rel="noopener"
+          >
+            Abrir localização no mapa
+          </a>
+        </div>
+        <div
+          id="map"
+          class="map__box"
+          aria-label="Mapa interativo com a localização do Restaurante Sabor & Arte na Universidade Católica de Angola"
+        >
+          <div class="map__placeholder">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Z"></path><path d="M9 3v15"></path><path d="M15 6v15"></path></svg>
+            <p>Carregando mapa interativo...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Redes sociais -->
+      <div class="mt-28">
+        <p class="social-title">
+          Segue-nos nas redes sociais
+        </p>
+        <div class="social-buttons">
+          <button class="btn btn-ghost" data-share="facebook">📘 Facebook</button>
+          <button class="btn btn-ghost" data-share="twitter">🐦 Twitter / X</button>
+          <button class="btn btn-ghost" data-share="linkedin">💼 LinkedIn</button>
+          <button class="btn btn-ghost" data-share="whatsapp">💬 WhatsApp</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="nav-brand">🧠 Sharada do Brunson</span>
+        <p>Um jogo de enigmas e desafios educacionais.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="politica.html">Política de Privacidade</a></li>
+        <li><a href="termos.html">Termos de Uso</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+      <p class="footer-copy">&copy; 2026 Sharada do Brunson. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <button id="btn-top" aria-label="Voltar ao topo">↑</button>
+  <script src="../../js/app.js"></script>
+</body>
+</html>

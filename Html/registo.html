@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Conta — Sharada do Brunson</title>
+  <meta name="description" content="Cria a tua conta gratuitamente e junta-te aos desafiantes da Sharada do Brunson.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/forms.css">
+  <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">🧠 Sharada</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="pages/sobre.html">Sobre</a></li>
+      <li><a href="pages/fases.html">Fases</a></li>
+      <li><a href="pages/ranking.html">Ranking</a></li>
+      <li><a href="pages/blog.html">Blog</a></li>
+      <li><a href="pages/faq.html">FAQ</a></li>
+      <li><a href="pages/contacto.html">Contacto</a></li>
+      <li><a href="login.html" class="btn btn-primary nav-btn-small">Entrar</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="dark-toggle" id="dark-toggle" aria-label="Alternar tema">🌙</button>
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="form-page form-page-medium">
+
+      <a href="index.html" class="back-link">← Voltar ao Início</a>
+
+      <div class="form-header">
+        <div class="form-icon">📜</div>
+        <h1 class="form-title">Criar Conta</h1>
+        <p class="form-subtitle">Junta-te aos desafiantes. É gratuito.</p>
+      </div>
+
+      <div class="form-card">
+        <form id="reg-form" novalidate>
+
+          <div class="grid-2-cols">
+            <div class="field">
+              <label for="reg-name">Nome</label>
+              <input type="text" id="reg-name" name="nome" placeholder="Nome" autocomplete="given-name" required>
+            </div>
+            <div class="field">
+              <label for="reg-surname">Sobrenome</label>
+              <input type="text" id="reg-surname" name="sobrenome" placeholder="Sobrenome" autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="reg-email">Email</label>
+            <input type="email" id="reg-email" name="email" placeholder="o_seu@email.com" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="reg-pass">Senha</label>
+            <input type="password" id="reg-pass" name="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password" required>
+            <div class="password-strength">
+              <div class="password-strength-bar" id="strength-bar"></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="reg-pass2">Confirmar Senha</label>
+            <input type="password" id="reg-pass2" name="password2" placeholder="Repita a senha" autocomplete="new-password" required>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">📜 Criar Conta</button>
+            <a href="index.html" class="btn btn-ghost">Cancelar</a>
+          </div>
+
+        </form>
+
+        <p class="form-link">
+          Já tem conta? <a href="login.html">Entre aqui</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <button id="btn-top" aria-label="Voltar ao topo">↑</button>
+  <script src="../js/app.js"></script>
+  <script>
+    // Indicador de força da senha
+    document.getElementById('reg-pass')?.addEventListener('input', function() {
+      const val = this.value;
+      const bar = document.getElementById('strength-bar');
+      if (!bar) return;
+      let strength = 0;
+      if (val.length >= 8) strength++;
+      if (/[A-Z]/.test(val)) strength++;
+      if (/[0-9]/.test(val)) strength++;
+      if (/[^A-Za-z0-9]/.test(val)) strength++;
+      const colors = ['#ef4444', '#f97316', '#eab308', '#22c55e'];
+      const widths  = ['25%', '50%', '75%', '100%'];
+      bar.style.width  = strength > 0 ? widths[strength - 1] : '0%';
+      bar.style.background = strength > 0 ? colors[strength - 1] : 'transparent';
+    });
+  </script>
+</body>
+</html>

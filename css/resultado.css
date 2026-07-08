@@ -1,0 +1,121 @@
+/* ══════════════════════════════════════
+   resultado.css — Ecrã Final
+══════════════════════════════════════ */
+
+.result-wrap {
+  width: 100%;
+  max-width: 500px;
+  padding: 80px 20px 60px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.result-icon {
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.5) rotate(-15deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);     opacity: 1; }
+}
+
+.result-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(212,160,23,0.5);
+}
+
+.result-subtitle {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.result-score {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.5rem, 10vw, 4rem);
+  color: var(--gold2);
+  text-shadow: 0 0 40px rgba(240,192,64,0.4);
+  line-height: 1;
+}
+
+.result-divider {
+  width: 160px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.result-msg {
+  font-size: 1.1rem;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 22px;
+  width: 100%;
+}
+
+/* Stats detalhadas */
+.result-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+.result-stat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 10px;
+  text-align: center;
+}
+
+.result-stat-num {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.4rem;
+  color: var(--purple2);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.result-stat-lbl {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Partilha social */
+.result-share {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.share-mini-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 12px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all var(--transition);
+}
+.share-mini-btn:hover { color: var(--text); border-color: var(--muted); }

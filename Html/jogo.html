@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo — Sharada do Brunson</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/jogo.css">
+  <link rel="stylesheet" href="../css/temas.css">
+  <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+  <!-- Fundo dinâmico do tema -->
+  <div class="game-bg" id="game-bg"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="dashboard.html" class="nav-brand" id="nav-brand">🧠 Sharada</a>
+    <div class="nav-actions">
+
+      <!-- Foto do jogador -->
+      <div class="player-photo-wrap">
+        <div class="player-avatar-placeholder" id="avatar-wrap" title="Clica para adicionar foto">
+          <span id="avatar-emoji">👤</span>
+          <input type="file" id="avatar-input" accept="image/*" aria-label="Adicionar foto de perfil">
+        </div>
+      </div>
+
+      <button class="dark-toggle" id="dark-toggle" aria-label="Alternar tema">🌙</button>
+    </div>
+  </nav>
+
+  <div class="page-wrapper page-wrapper-home wrapper-align-start">
+    <div class="game-wrap">
+
+      <!-- Cabeçalho -->
+      <div class="game-header">
+        <a href="dashboard.html" class="back-link m-0">← Sair</a>
+        <span class="game-mode-tag" id="mode-tag">🃏 A Carregar…</span>
+        <span class="game-pts" id="game-pts">⭐ 0 pts</span>
+      </div>
+
+      <!-- Barra de progresso -->
+      <div class="progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="progress-bar-fill" id="progress-fill" style="width:0%;"></div>
+      </div>
+
+      <!-- Meta -->
+      <div class="question-meta">
+        <span class="question-count" id="question-count">Questão 1 de 5</span>
+        <span class="q-timer" id="q-timer" aria-live="polite">⏱ 30s</span>
+      </div>
+
+      <!-- Cartão -->
+      <div class="riddle-card" role="main">
+        <div class="riddle-label" id="riddle-label">Enigma</div>
+        <p class="riddle-text" id="riddle-text">A carregar…</p>
+        <div class="hint-area" id="hint-area" style="display:none;" aria-live="polite"></div>
+      </div>
+
+      <!-- Opções -->
+      <div class="options-list" id="options-list" role="group" aria-label="Opções de resposta"></div>
+
+      <!-- Feedback -->
+      <div class="feedback-msg" id="feedback-msg" style="display:none;" aria-live="assertive"></div>
+
+      <!-- Acções -->
+      <div class="game-actions">
+        <button class="btn btn-ghost btn-hint" id="btn-hint">💡 Dica (-5 pts)</button>
+        <button class="btn btn-primary btn-next" id="btn-next" style="display:none;">Próximo →</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../js/app.js"></script>
+  <script src="../js/jogo.js"></script>
+  <script>
+    /* ── Aplicar tema visual por modo ── */
+    (function() {
+      const modo = new URLSearchParams(window.location.search).get('modo') || 'charadas';
+      const TEMAS = {
+        charadas:    { classe: 'tema-charadas',    brand: '🕯️ Charadas',  label: 'Charada',  tag: '🃏 Charadas'   },
+        educacional: { classe: 'tema-educacional', brand: '⚡ EDU.LAB',   label: 'QUESTÃO',  tag: '📡 EDUCACIONAL' },
+        enigmas:     { classe: 'tema-enigmas',     brand: '🔮 Enigmas',   label: 'Enigma',   tag: '🔮 Enigmas'    },
+      };
+      const t = TEMAS[modo] || TEMAS.charadas;
+      document.body.classList.add(t.classe);
+      document.getElementById('nav-brand').textContent  = t.brand;
+      document.getElementById('mode-tag').textContent   = t.tag;
+      document.getElementById('riddle-label').textContent = t.label;
+    })();
+
+    /* ── Foto do jogador ── */
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('avatar-input');
+      const wrap  = document.getElementById('avatar-wrap');
+      const emoji = document.getElementById('avatar-emoji');
+
+      // Carrega foto guardada
+      const saved = localStorage.getItem('player-avatar');
+      if (saved) {
+        wrap.style.backgroundImage = `url(${saved})`;
+        wrap.style.backgroundSize  = 'cover';
+        emoji.style.display = 'none';
+      }
+
+      input.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          const src = ev.target.result;
+          localStorage.setItem('player-avatar', src);
+          wrap.style.backgroundImage = `url(${src})`;
+          wrap.style.backgroundSize  = 'cover';
+          emoji.style.display = 'none';
+          if (typeof Toast !== 'undefined') Toast.show('Foto actualizada!', 'success');
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+  </script>
+</body>
+</html>

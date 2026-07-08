@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" width="100" height="80">
+  <defs>
+    <linearGradient id="brain-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <!-- Left hemisphere -->
+  <path d="M50 12 Q25 10 18 28 Q10 40 15 55 Q20 68 35 68 L50 68 Z"
+        fill="url(#brain-grad)" stroke="#6d28d9" stroke-width="1.5" opacity="0.9"/>
+  <!-- Right hemisphere -->
+  <path d="M50 12 Q75 10 82 28 Q90 40 85 55 Q80 68 65 68 L50 68 Z"
+        fill="url(#brain-grad)" stroke="#6d28d9" stroke-width="1.5" opacity="0.75"/>
+  <!-- Center line -->
+  <line x1="50" y1="12" x2="50" y2="68" stroke="#0a0812" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <!-- Folds left -->
+  <path d="M25 32 Q30 28 28 38" fill="none" stroke="#c084fc" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M18 46 Q26 42 22 52" fill="none" stroke="#c084fc" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M25 58 Q33 55 30 63" fill="none" stroke="#c084fc" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Folds right -->
+  <path d="M75 32 Q70 28 72 38" fill="none" stroke="#ddd6fe" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M82 46 Q74 42 78 52" fill="none" stroke="#ddd6fe" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M75 58 Q67 55 70 63" fill="none" stroke="#ddd6fe" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Glow star -->
+  <text x="50" y="46" font-family="Georgia,serif" font-size="14" fill="#f0c040" text-anchor="middle">✦</text>
+</svg>

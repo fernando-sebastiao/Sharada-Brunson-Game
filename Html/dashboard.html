@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Sharada do Brunson</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <style>
+    /* Cards de fase com identidade visual própria */
+    .mode-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+
+    /* ── Fase Charadas — fogo/âmbar ── */
+    .card-charadas {
+      background: linear-gradient(145deg, #2e1a0a, #1a0e05);
+      border: 1px solid #6b3d1a;
+      color: #f5e6c8;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-charadas::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 110%, rgba(232,135,10,0.2) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .card-charadas:hover { border-color: #e8870a; box-shadow: 0 8px 32px rgba(232,135,10,0.25); }
+    .card-charadas .mode-icon { filter: drop-shadow(0 0 8px rgba(232,135,10,0.6)); }
+    .card-charadas .mode-name { color: #f5b942; font-family: 'Cinzel Decorative', serif; }
+    .card-charadas .mode-desc { color: #a07850; }
+    .card-charadas .fase-num  { background: rgba(232,135,10,0.15); color: #f5b942; border-color: rgba(232,135,10,0.3); }
+
+    /* ── Fase Educacional — neon/tech ── */
+    .card-educacional {
+      background: linear-gradient(145deg, #08173d, #020818);
+      border: 1px solid #1a3a7a;
+      color: #c8e8ff;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-educacional::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(rgba(0,180,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,180,255,0.04) 1px, transparent 1px);
+      background-size: 20px 20px;
+      pointer-events: none;
+    }
+    .card-educacional:hover { border-color: #00b4ff; box-shadow: 0 8px 32px rgba(0,180,255,0.2); }
+    .card-educacional .mode-icon { filter: drop-shadow(0 0 8px rgba(0,180,255,0.7)); }
+    .card-educacional .mode-name { color: #38d9ff; font-family: 'Orbitron', 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 2px; }
+    .card-educacional .mode-desc { color: #5a8aaa; font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; }
+    .card-educacional .fase-num  { background: rgba(0,180,255,0.1); color: #38d9ff; border-color: rgba(0,180,255,0.3); }
+
+    /* ── Fase Enigmas — místico/roxo ── */
+    .card-enigmas {
+      background: linear-gradient(145deg, #160830, #06020f);
+      border: 1px solid #3d1a6e;
+      color: #f0e6ff;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-enigmas::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(192,38,211,0.15) 0%, transparent 60%);
+      animation: dash-glow 4s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes dash-glow {
+      from { opacity:0.5; } to { opacity:1; }
+    }
+    .card-enigmas:hover { border-color: #c026d3; box-shadow: 0 8px 32px rgba(192,38,211,0.2); }
+    .card-enigmas .mode-icon { filter: drop-shadow(0 0 10px rgba(232,121,249,0.7)); }
+    .card-enigmas .mode-name { color: #e879f9; font-family: 'Philosopher', serif; font-style: italic; }
+    .card-enigmas .mode-desc { color: #7a5a9a; }
+    .card-enigmas .fase-num  { background: rgba(192,38,211,0.12); color: #e879f9; border-color: rgba(192,38,211,0.3); }
+
+    /* Locked */
+    .card-locked {
+      background: var(--card);
+      border: 1px dashed var(--border);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    /* Badge de fase */
+    .fase-num {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      border: 1px solid;
+      margin-top: 4px;
+    }
+
+    /* Perfil do jogador no topo */
+    .player-profile-bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+
+    .profile-avatar-wrap {
+      position: relative;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .profile-avatar-img {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+      display: none;
+    }
+
+    .profile-avatar-placeholder {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px dashed var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .profile-avatar-placeholder:hover {
+      border-color: var(--gold2);
+      box-shadow: 0 0 14px rgba(212,160,23,0.3);
+    }
+
+    .profile-upload-hint {
+      position: absolute;
+      bottom: -2px; right: -2px;
+      width: 18px; height: 18px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      color: #000;
+      font-weight: 700;
+    }
+
+    .profile-avatar-input {
+      position: absolute; inset: 0;
+      opacity: 0; cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .profile-info { flex: 1; }
+    .profile-name { font-family: 'Cinzel Decorative', serif; font-size: 0.95rem; color: var(--gold); }
+    .profile-sub  { color: var(--muted); font-size: 0.8rem; font-family: 'Inter', sans-serif; margin-top: 2px; }
+
+    @media (max-width: 480px) {
+      .mode-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+  <!-- Fontes dos temas -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&family=Philosopher:ital,wght@0,400;0,700;1,400&display=swap">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">🧠 Sharada</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="dashboard.html" class="active">Dashboard</a></li>
+      <li><a href="pages/ranking.html">Ranking</a></li>
+      <li><a href="pages/sobre.html">Sobre</a></li>
+      <li><a href="pages/blog.html">Blog</a></li>
+      <li><a href="pages/faq.html">FAQ</a></li>
+      <li><a href="pages/contacto.html">Contacto</a></li>
+      <li><a href="index.html" class="btn btn-ghost nav-btn-small">Sair</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="dark-toggle" id="dark-toggle" aria-label="Alternar tema">🌙</button>
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-wrapper dashboard-bg">
+    <div class="dashboard-wrap">
+
+      <!-- Perfil do jogador com foto -->
+      <div class="player-profile-bar">
+        <div class="profile-avatar-wrap" title="Clica para alterar a tua foto">
+          <div class="profile-avatar-placeholder" id="dash-avatar-placeholder">
+            <span id="dash-avatar-emoji">🧙</span>
+          </div>
+          <img class="profile-avatar-img" id="dash-avatar-img" src="" alt="Foto de perfil">
+          <div class="profile-upload-hint">📷</div>
+          <input type="file" class="profile-avatar-input" id="dash-avatar-input" accept="image/*" aria-label="Alterar foto de perfil">
+        </div>
+        <div class="profile-info">
+          <div class="profile-name" id="profile-name">Desafiante</div>
+          <div class="profile-sub">Clica na foto para personalizar o teu perfil</div>
+        </div>
+        <div class="profile-level">
+          <div class="stat-number" id="stat-nivel">1</div>
+          <div class="stat-label">Nível</div>
+        </div>
+      </div>
+
+      <!-- Estatísticas -->
+      <div class="stats-row" role="list">
+        <div class="stat-card" role="listitem">
+          <div class="stat-number" id="stat-pontos">0</div>
+          <div class="stat-label">Pontos</div>
+        </div>
+        <div class="stat-card" role="listitem">
+          <div class="stat-number" id="stat-resolvidos">0</div>
+          <div class="stat-label">Correctos</div>
+        </div>
+        <div class="stat-card" role="listitem">
+          <div class="stat-number" id="stat-precisao">—</div>
+          <div class="stat-label">Precisão</div>
+        </div>
+      </div>
+
+      <!-- Fases -->
+      <p class="section-title">Escolhe a tua Fase</p>
+      <div class="mode-grid">
+
+        <!-- Fase 1: Charadas -->
+        <a href="jogo.html?modo=charadas" class="mode-card card-charadas" aria-label="Jogar Fase de Charadas">
+          <div class="mode-icon">🕯️</div>
+          <div class="mode-name">Charadas</div>
+          <div class="mode-desc">Enigmas de múltipla escolha no espírito de uma taverna medieval</div>
+          <span class="fase-num">Fase 1 · 5 questões</span>
+        </a>
+
+        <!-- Fase 2: Educacional -->
+        <a href="jogo.html?modo=educacional" class="mode-card card-educacional" aria-label="Jogar Fase Educacional">
+          <div class="mode-icon">📡</div>
+          <div class="mode-name">EDUCACIONAL</div>
+          <div class="mode-desc">Física • Matemática • Redes • Programação • Sist. Distribuídos</div>
+          <span class="fase-num">Fase 2 · 5 questões</span>
+        </a>
+
+        <!-- Fase 3: Enigmas -->
+        <a href="jogo.html?modo=enigmas" class="mode-card card-enigmas" aria-label="Jogar Fase de Enigmas">
+          <div class="mode-icon">🔮</div>
+          <div class="mode-name">Enigmas</div>
+          <div class="mode-desc">Desafios místicos que testam os limites do teu raciocínio</div>
+          <span class="fase-num">Fase 3 · 3 questões</span>
+        </a>
+
+        <!-- Bloqueado -->
+        <div class="mode-card card-locked" aria-disabled="true">
+          <div class="mode-icon">🔒</div>
+          <div class="mode-name">Desafio Final</div>
+          <div class="mode-desc">Combina todas as fases num único teste supremo</div>
+          <span class="fase-num">Em breve</span>
+        </div>
+
+      </div>
+
+      <!-- Partilhar -->
+      <div class="share-actions">
+        <button class="btn btn-ghost" data-share="whatsapp">💬 Partilhar</button>
+        <button class="btn btn-ghost" data-share="facebook">📘 Facebook</button>
+      </div>
+
+    </div>
+  </div>
+
+  <button id="btn-top" aria-label="Voltar ao topo">↑</button>
+
+  <script src="../js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // ── Foto de perfil ──
+      const avatarInput  = document.getElementById('dash-avatar-input');
+      const avatarImg    = document.getElementById('dash-avatar-img');
+      const placeholder  = document.getElementById('dash-avatar-placeholder');
+      const profileName  = document.getElementById('profile-name');
+
+      // Nome guardado
+      const savedName = localStorage.getItem('player-name');
+      if (savedName) profileName.textContent = savedName;
+
+      // Foto guardada
+      const savedAvatar = localStorage.getItem('player-avatar');
+      if (savedAvatar) {
+        avatarImg.src = savedAvatar;
+        avatarImg.style.display = 'block';
+        placeholder.style.display = 'none';
+      }
+
+      avatarInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          const src = ev.target.result;
+          localStorage.setItem('player-avatar', src);
+          avatarImg.src = src;
+          avatarImg.style.display = 'block';
+          placeholder.style.display = 'none';
+          Toast.show('Foto de perfil actualizada! 📸', 'success');
+        };
+        reader.readAsDataURL(file);
+      });
+
+      // ── Estatísticas do último jogo ──
+      const res = JSON.parse(sessionStorage.getItem('resultado') || 'null');
+      if (res) {
+        document.getElementById('stat-pontos').textContent    = res.pontos;
+        document.getElementById('stat-resolvidos').textContent = res.corretos;
+        const pct = Math.round((res.corretos / res.total) * 100);
+        document.getElementById('stat-precisao').textContent  = pct + '%';
+        if (res.pontos >= 100) document.getElementById('stat-nivel').textContent = '2';
+        if (res.pontos >= 200) document.getElementById('stat-nivel').textContent = '3';
+      }
+    });
+  </script>
+</body>
+</html>

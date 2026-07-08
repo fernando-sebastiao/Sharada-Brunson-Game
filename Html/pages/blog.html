@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Sharada do Brunson</title>
+  <meta name="description" content="Artigos sobre raciocínio lógico, a história dos enigmas e dicas de aprendizagem de redes e física.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/pages.css">
+  <link rel="stylesheet" href="../../css/custom.css">
+  <style>
+    /* Estilos locais para o Blog */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .blog-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+      text-decoration: none;
+      color: var(--text);
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--purple2);
+      box-shadow: 0 8px 30px rgba(168, 85, 247, 0.15);
+    }
+    .blog-card-img {
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+    .blog-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .blog-card:hover .blog-card-img img {
+      transform: scale(1.05);
+    }
+    .blog-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .blog-card-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      gap: 12px;
+    }
+    .blog-card-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.05rem;
+      color: var(--gold);
+      line-height: 1.4;
+    }
+    .blog-card-excerpt {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      flex: 1;
+    }
+    .blog-card-more {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 0.8rem;
+      color: var(--purple2);
+      font-weight: 700;
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .blog-card:hover .blog-card-more {
+      color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Navegação principal">
+    <a href="../index.html" class="nav-brand">🧠 Sharada</a>
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="../index.html">Início</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="fases.html">Fases</a></li>
+      <li><a href="ranking.html">Ranking</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="../login.html" class="btn btn-primary nav-btn-small">Entrar</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="dark-toggle" id="dark-toggle" aria-label="Alternar tema">🌙</button>
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <div class="page-wrapper wrapper-align-start">
+    <div class="inner-page">
+
+      <a href="../index.html" class="back-link">← Voltar ao Início</a>
+
+      <div class="page-hero">
+        <div class="page-hero-icon">📰</div>
+        <h1 class="page-title">Blog do Desafiante</h1>
+        <p class="page-subtitle">Explora segredos, curiosidades acadêmicas e técnicas para exercitar o cérebro.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Grid de Artigos -->
+      <div class="blog-grid">
+
+        <!-- Artigo 1 -->
+        <article class="blog-card">
+          <div class="blog-card-img">
+            <img src="../../images/5ea4c44969cfc97aa40e29f733955a40.jpg" alt="Silhueta de pessoa pensando com interrogações">
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <span>📅 08 Julho, 2026</span>
+              <span>👤 Por Brunson</span>
+            </div>
+            <h2 class="blog-card-title">O Raciocínio Lateral e a Arte de Decifrar Enigmas</h2>
+            <p class="blog-card-excerpt">
+              Descobre como pensar "fora da caixa" pode ajudar-te a resolver enigmas que parecem impossíveis à primeira vista. Treina a tua mente para ver novos caminhos.
+            </p>
+            <span class="blog-card-more">Ler Artigo completo →</span>
+          </div>
+        </article>
+
+        <!-- Artigo 2 -->
+        <article class="blog-card">
+          <div class="blog-card-img">
+            <img src="../../images/cbced4fcdd79857fc581631782674b43.jpg" alt="Leão rugindo para macaco pensativo">
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <span>📅 05 Julho, 2026</span>
+              <span>👤 Por Equipa Sharada</span>
+            </div>
+            <h2 class="blog-card-title">A Origem e História dos Enigmas Clássicos na Antiguidade</h2>
+            <p class="blog-card-excerpt">
+              Desde a Esfinge de Tebas até aos desafios medievais, os enigmas moldaram a cultura e testaram a inteligência de reis e guerreiros. Conheça as histórias mais fascinantes.
+            </p>
+            <span class="blog-card-more">Ler Artigo completo →</span>
+          </div>
+        </article>
+
+        <!-- Artigo 3 -->
+        <article class="blog-card">
+          <div class="blog-card-img">
+            <img src="../../images/sharada.jpg" alt="Padrão colorido com cartas de interrogação">
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <span>📅 01 Julho, 2026</span>
+              <span>👤 Por Professor Mestre</span>
+            </div>
+            <h2 class="blog-card-title">Estudar Ciências Jogando: A Revolução da Gamificação</h2>
+            <p class="blog-card-excerpt">
+              Entende como a dinâmica de jogos pode facilitar a retenção de conceitos difíceis de Física, Redes de Computadores e Lógica de Programação de forma divertida.
+            </p>
+            <span class="blog-card-more">Ler Artigo completo →</span>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="nav-brand">🧠 Sharada do Brunson</span>
+        <p>Um jogo de enigmas e desafios educacionais.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="politica.html">Política de Privacidade</a></li>
+        <li><a href="termos.html">Termos de Uso</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+      <p class="footer-copy">&copy; 2026 Sharada do Brunson. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <button id="btn-top" aria-label="Voltar ao topo">↑</button>
+
+  <script src="../../js/app.js"></script>
+</body>
+</html>

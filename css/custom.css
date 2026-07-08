@@ -1,0 +1,278 @@
+/* ══════════════════════════════════════════
+   custom.css — Ficheiro de Estilos Customizados
+   Contém classes utilitárias para substituir CSS inline
+   e melhorar a responsividade global do projeto.
+   ══════════════════════════════════════════ */
+
+/* ── Classes Utilitárias de Layout ── */
+.page-wrapper-home {
+  padding-top: 60px;
+}
+
+.wrapper-align-start {
+  justify-content: flex-start !important;
+}
+
+.inner-page-medium {
+  max-width: 700px !important;
+}
+
+.inner-page-legal {
+  max-width: 740px !important;
+}
+
+.form-page-medium {
+  max-width: 480px !important;
+}
+
+.grid-2-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ── Classes Utilitárias de Margens e Alinhamento ── */
+.mt-12 { margin-top: 12px !important; }
+.mt-24 { margin-top: 24px !important; }
+.mt-28 { margin-top: 28px !important; }
+.mt-32 { margin-top: 32px !important; }
+.mt-40 { margin-top: 40px !important; }
+.mb-8  { margin-bottom: 8px !important; }
+.m-0   { margin: 0 !important; }
+
+.display-inline-flex {
+  display: inline-flex !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+/* ── Navegação e Botões ── */
+.nav-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav-btn-small {
+  padding: 8px 16px !important;
+  font-size: 0.75rem !important;
+}
+
+/* Specificity fix for buttons inside nav-links */
+.nav-links a.btn {
+  font-family: 'Cinzel Decorative', serif !important;
+  letter-spacing: 1.5px !important;
+  transition: all var(--transition) !important;
+}
+
+.nav-links a.btn-primary {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, var(--purple), var(--purple2)) !important;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.4) !important;
+}
+
+.nav-links a.btn-primary:hover {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, var(--purple), var(--purple2)) !important;
+  box-shadow: 0 4px 30px rgba(124,58,237,0.65) !important;
+  transform: translateY(-1px) !important;
+}
+
+.nav-links a.btn-ghost {
+  color: var(--muted) !important;
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  font-family: 'Inter', sans-serif !important;
+  letter-spacing: 0.3px !important;
+}
+
+.nav-links a.btn-ghost:hover {
+  color: var(--text) !important;
+  border-color: var(--muted) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.purple2-link {
+  color: var(--purple2) !important;
+  text-decoration: underline;
+  transition: color var(--transition);
+}
+.purple2-link:hover {
+  color: var(--gold) !important;
+}
+
+/* ── Secção Social ── */
+.social-row-container {
+  margin-top: 32px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.social-title {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 14px;
+  font-family: 'Inter', sans-serif;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Cards de Fases e Estados ── */
+.opacity-disabled {
+  opacity: 0.45 !important;
+  pointer-events: none !important;
+  cursor: not-allowed;
+}
+
+.badge-soon {
+  margin-bottom: 8px !important;
+  display: inline-flex !important;
+  background: var(--surface) !important;
+  color: var(--muted) !important;
+  border-color: var(--border) !important;
+}
+
+/* ── Estilos de Ranking (Pódio e Tabela) ── */
+.ranking-filters {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.podio-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.podio-avatar-main {
+  margin: 0 auto 8px !important;
+  background: linear-gradient(135deg, #b45309, #fbbf24) !important;
+}
+
+.podio-avatar-bronze {
+  margin: 0 auto 8px !important;
+  background: linear-gradient(135deg, #78350f, #b45309) !important;
+}
+
+.podio-avatar-silver {
+  margin: 0 auto 8px !important;
+}
+
+.text-muted-small {
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 12px;
+  font-family: 'Inter', sans-serif;
+}
+
+.align-center-gap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.muted-small {
+  color: var(--muted) !important;
+  font-size: 0.85rem !important;
+}
+
+.ranking-table-container {
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Estilos de fonte do Pódio */
+.podio-name-23 {
+  font-size: 0.85rem !important;
+  color: var(--text) !important;
+  text-align: center !important;
+  font-weight: 500 !important;
+}
+
+.podio-pts-23 {
+  font-size: 0.8rem !important;
+  color: #94a3b8 !important;
+  text-align: center !important;
+}
+
+.podio-name-1 {
+  font-size: 0.9rem !important;
+  color: var(--gold) !important;
+  text-align: center !important;
+  font-weight: 600 !important;
+}
+
+.podio-pts-1 {
+  font-size: 0.85rem !important;
+  color: var(--gold2) !important;
+  text-align: center !important;
+}
+
+/* ── Avatares de Jogadores (Testemunhos) ── */
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  margin: 12px auto 6px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Imagens Ilustrativas de Fases ── */
+.fase-card-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-bottom: 8px;
+  transition: transform var(--transition);
+}
+.fase-card:hover .fase-card-image {
+  transform: scale(1.02);
+}
+
+/* ── Responsividade Mobile Adicional ── */
+@media (max-width: 768px) {
+  .grid-2-cols {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+  
+  .social-row-container, .social-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .social-row-container button, .social-buttons button, .social-buttons a {
+    width: 100%;
+  }
+
+  .podio-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .podio-card {
+    flex: 1 1 100px;
+  }
+}

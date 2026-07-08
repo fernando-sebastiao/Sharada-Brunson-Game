@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ranking — Sharada do Brunson</title>
+  <meta name="description" content="Vê os melhores jogadores da Sharada do Brunson. Compete pelo topo da tabela de líderes.">
+  <link rel="canonical" href="https://sharada-do-brunson.vercel.app/pages/ranking.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/pages.css">
+  <link rel="stylesheet" href="../../css/custom.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-brand">🧠 Sharada</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html">Início</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="fases.html">Fases</a></li>
+      <li><a href="ranking.html" class="active">Ranking</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="../login.html" class="btn btn-primary nav-btn-small">Entrar</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="dark-toggle" id="dark-toggle" aria-label="Alternar tema">🌙</button>
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-wrapper wrapper-align-start">
+    <div class="inner-page">
+
+      <a href="../index.html" class="back-link">← Voltar ao Início</a>
+
+      <div class="page-hero">
+        <div class="page-hero-icon">🏆</div>
+        <h1 class="page-title">Ranking Global</h1>
+        <p class="page-subtitle">Os desafiantes mais brilhantes de todos os tempos.</p>
+      </div>
+
+      <!-- Filtros de modo -->
+      <div class="ranking-filters" role="group" aria-label="Filtrar ranking por modo">
+        <button class="btn btn-primary rank-filter active" data-modo="all">Todos</button>
+        <button class="btn btn-ghost rank-filter" data-modo="charadas">🃏 Charadas</button>
+        <button class="btn btn-ghost rank-filter" data-modo="educacional">📚 Educacional</button>
+        <button class="btn btn-ghost rank-filter" data-modo="enigmas">🔮 Enigmas</button>
+      </div>
+
+      <!-- Pódio Top 3 -->
+      <div class="podio-container">
+        <!-- 2º lugar -->
+        <div class="podio-card" style="--h:80px;">
+          <div class="rank-avatar podio-avatar-silver">🧙</div>
+          <div class="podio-name-23">Carlos M.</div>
+          <div class="podio-pts-23">820 pts</div>
+          <div class="podio-base silver">2º</div>
+        </div>
+        <!-- 1º lugar -->
+        <div class="podio-card" style="--h:110px;transform:translateY(-20px);">
+          <div class="rank-avatar podio-avatar-main">🧠</div>
+          <div class="podio-name-1">Ana L.</div>
+          <div class="podio-pts-1">1 240 pts</div>
+          <div class="podio-base gold">1º</div>
+        </div>
+        <!-- 3º lugar -->
+        <div class="podio-card" style="--h:60px;">
+          <div class="rank-avatar podio-avatar-bronze">🔮</div>
+          <div class="podio-name-23">Sofia R.</div>
+          <div class="podio-pts-23">740 pts</div>
+          <div class="podio-base bronze">3º</div>
+        </div>
+      </div>
+
+      <!-- Tabela completa -->
+      <div class="content-section ranking-table-container">
+        <table class="ranking-table" aria-label="Tabela de classificação">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Jogador</th>
+              <th>Pontos</th>
+              <th>Nível</th>
+              <th>Modo</th>
+            </tr>
+          </thead>
+          <tbody id="ranking-body">
+            <!-- Gerado por JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-muted-small">
+        Actualizado a cada sessão de jogo. Regista-te para aparecer no ranking.
+      </p>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="nav-brand">🧠 Sharada do Brunson</span>
+        <p>Um jogo de enigmas e desafios educacionais.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="politica.html">Política de Privacidade</a></li>
+        <li><a href="termos.html">Termos de Uso</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+      <p class="footer-copy">&copy; 2026 Sharada do Brunson. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <button id="btn-top" aria-label="Voltar ao topo">↑</button>
+  <script src="../../js/app.js"></script>
+  <script>
+    const RANKING_DATA = [
+      { pos:1,  nome:'Ana L.',      pts:1240, nivel:5, modo:'educacional', avatar:'🧠' },
+      { pos:2,  nome:'Carlos M.',   pts:820,  nivel:4, modo:'charadas',    avatar:'🧙' },
+      { pos:3,  nome:'Sofia R.',    pts:740,  nivel:3, modo:'enigmas',     avatar:'🔮' },
+      { pos:4,  nome:'João P.',     pts:690,  nivel:3, modo:'educacional', avatar:'📚' },
+      { pos:5,  nome:'Maria A.',    pts:580,  nivel:2, modo:'charadas',    avatar:'🃏' },
+      { pos:6,  nome:'Rui F.',      pts:520,  nivel:2, modo:'enigmas',     avatar:'🌟' },
+      { pos:7,  nome:'Lena K.',     pts:450,  nivel:2, modo:'educacional', avatar:'⚡' },
+      { pos:8,  nome:'Pedro S.',    pts:390,  nivel:1, modo:'charadas',    avatar:'🎯' },
+      { pos:9,  nome:'Beatriz N.',  pts:320,  nivel:1, modo:'enigmas',     avatar:'💫' },
+      { pos:10, nome:'Tomás G.',    pts:280,  nivel:1, modo:'charadas',    avatar:'🔑' },
+    ];
+
+    function renderRanking(filtro) {
+      const tbody = document.getElementById('ranking-body');
+      const dados = filtro === 'all' ? RANKING_DATA : RANKING_DATA.filter(r => r.modo === filtro);
+
+      const modoLabels = { charadas:'🃏 Charadas', educacional:'📚 Educacional', enigmas:'🔮 Enigmas' };
+      const posClasses = { 1:'gold', 2:'silver', 3:'bronze' };
+
+      tbody.innerHTML = dados.map((r, i) => `
+        <tr>
+          <td><span class="rank-pos ${posClasses[r.pos] || ''}">${r.pos}</span></td>
+          <td>
+            <div class="align-center-gap">
+              <div class="rank-avatar">${r.avatar}</div>
+              <span class="rank-name">${r.nome}</span>
+            </div>
+          </td>
+          <td><span class="rank-pts">${r.pts.toLocaleString()}</span></td>
+          <td><span class="rank-nivel">Nív. ${r.nivel}</span></td>
+          <td><span class="muted-small">${modoLabels[r.modo]}</span></td>
+        </tr>
+      `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderRanking('all');
+
+      document.querySelectorAll('.rank-filter').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.rank-filter').forEach(b => {
+            b.classList.remove('btn-primary');
+            b.classList.add('btn-ghost');
+            b.classList.remove('active');
+          });
+          btn.classList.add('btn-primary');
+          btn.classList.remove('btn-ghost');
+          btn.classList.add('active');
+          renderRanking(btn.dataset.modo);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
