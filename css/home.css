@@ -102,6 +102,7 @@
   padding: 60px 20px;
   position: relative;
   z-index: 1;
+  overflow-x: hidden;
 }
 
 .features-section { background: var(--surface); }
